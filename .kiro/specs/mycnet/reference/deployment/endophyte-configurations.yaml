@@ -1,0 +1,349 @@
+# Reference Service Deployment Configurations
+# These examples demonstrate Endomycetes (Phase 1) and Endophytes (Phase 2+)
+
+# === ENDOMYCETES (Phase 1: Native Distribution) ===
+
+# Blockchain Endomycete - Native P2P Distribution
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: blockchain-node
+  annotations:
+    mycelium.network/service-type: "endomycete"
+    mycelium.network/distribution-strategy: "blockchain-consensus"
+spec:
+  replicas: 3
+  serviceName: "blockchain-service"
+  template:
+    metadata:
+      labels:
+        app: blockchain-node
+    spec:
+      containers:
+      - name: blockchain
+        image: ethereum/client:latest
+        ports:
+        - containerPort: 30303
+          name: p2p
+        - containerPort: 8545
+          name: rpc
+        resources:
+          requests:
+            cpu: "2"
+            memory: "8Gi"
+            storage: "1Ti"
+        env:
+        - name: NETWORK_ID
+          value: "mycelium-chain"
+        # Application manages its own P2P networking and consensus
+
+---
+# Distributed Database Endomycete - Native Clustering
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: cassandra-cluster
+  annotations:
+    mycelium.network/service-type: "endomycete"
+    mycelium.network/distribution-strategy: "consistent-hashing"
+spec:
+  replicas: 3
+  serviceName: "cassandra"
+  template:
+    spec:
+      containers:
+      - name: cassandra
+        image: cassandra:4.0
+        ports:
+        - containerPort: 9042
+          name: cql
+        - containerPort: 7000
+          name: intra-node
+        resources:
+          requests:
+            cpu: "4"
+            memory: "16Gi"
+            storage: "500Gi"
+        env:
+        - name: CASSANDRA_SEEDS
+          value: "cassandra-0.cassandra,cassandra-1.cassandra"
+        # Application handles its own sharding and replication
+
+---
+# Microservice Endomycete - Standard Kubernetes Pattern
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-service
+  annotations:
+    mycelium.network/service-type: "endomycete"
+    mycelium.network/distribution-strategy: "kubernetes-native"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: user-service
+  template:
+    spec:
+      containers:
+      - name: user-service
+        image: company/user-service:v1.2
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            cpu: "0.5"
+            memory: "1Gi"
+        # Standard stateless microservice with Kubernetes load balancing
+
+---
+# === ENDOPHYTES (Phase 2+: Virtual Distributed Computer) ===
+
+# Tier 1: Dedicated Virtual Computer - High Security Financial Application
+apiVersion: v1
+kind: Endophyte
+metadata:
+  name: financial-trading-app
+  annotations:
+    mycelium.network/isolation-level: "dedicated"
+    mycelium.network/security-level: "high"
+    mycelium.network/compliance: "PCI-DSS,SOX"
+spec:
+  isolation: dedicated
+  image: "financial-corp/trading-platform:v2.1"
+  resources:
+    cpu: "8 cores"
+    memory: "16Gi"
+    storage: "500Gi"
+  security:
+    encryption:
+      at-rest: true
+      in-transit: true
+    network-policies:
+      - "deny-all-ingress"
+      - "allow-specific-egress"
+    audit-logging: true
+  virtualComputer:
+    dedicatedNodes: 3
+    consensusThreshold: 0.67
+    failoverTime: "100ms"
+
+---
+# Tier 1: Dedicated Virtual Computer - Resource Intensive VM
+apiVersion: v1
+kind: Endophyte
+metadata:
+  name: windows-desktop-vm
+  annotations:
+    mycelium.network/isolation-level: "dedicated"
+    mycelium.network/vm-type: "full-desktop"
+spec:
+  isolation: dedicated
+  image: "mycelium/windows-11-enterprise:latest"
+  resources:
+    cpu: "4 cores"
+    memory: "8Gi"
+    storage: "200Gi"
+  virtualComputer:
+    type: "full-virtualization"
+    dedicatedNodes: 3
+    memorySync: "continuous"
+    cpuSync: "instruction-level"
+  networking:
+    staticIP: "10.100.1.50"
+    vpnAccess: true
+    externalAccess:
+      - "rdp.company.com:3389"
+      - "fileserver.company.com:445"
+
+---
+# Tier 2: Shared Virtual Computer - Standard Web Application
+apiVersion: v1
+kind: Endophyte
+metadata:
+  name: company-website
+  annotations:
+    mycelium.network/isolation-level: "shared"
+    mycelium.network/security-level: "standard"
+    mycelium.network/compatibility-group: "web-services"
+spec:
+  isolation: shared
+  image: "nginx:alpine"
+  resources:
+    cpu: "1 core"
+    memory: "2Gi"
+    storage: "10Gi"
+  compatibilityGroup: "web-services"
+  namespace: "company-website-ns"
+  sharedComputer:
+    maxEndophytes: 10
+    resourceSharing: "fair-share"
+    isolationMethod: "namespace"
+
+---
+# Tier 2: Shared Virtual Computer - Microservice
+apiVersion: v1
+kind: Endophyte
+metadata:
+  name: user-authentication-service
+  annotations:
+    mycelium.network/isolation-level: "shared"
+    mycelium.network/compatibility-group: "microservices"
+spec:
+  isolation: shared
+  image: "company/auth-service:v1.3"
+  resources:
+    cpu: "0.5 cores"
+    memory: "1Gi"
+    storage: "5Gi"
+  compatibilityGroup: "microservices"
+  namespace: "auth-service-ns"
+  serviceDiscovery:
+    serviceSpore: true
+    endpoints:
+      - name: "auth-api"
+        port: 8080
+        protocol: "HTTP"
+
+---
+# Tier 2: Shared Virtual Computer - Database
+apiVersion: v1
+kind: Endophyte
+metadata:
+  name: application-database
+  annotations:
+    mycelium.network/isolation-level: "shared"
+    mycelium.network/compatibility-group: "databases"
+spec:
+  isolation: shared
+  image: "postgres:14"
+  resources:
+    cpu: "2 cores"
+    memory: "4Gi"
+    storage: "100Gi"
+  compatibilityGroup: "databases"
+  namespace: "app-db-ns"
+  storage:
+    type: "distributed-block"
+    replication: 3
+    encryption: false  # Performance over encryption for internal DB
+  networking:
+    internalOnly: true
+    allowedNamespaces:
+      - "auth-service-ns"
+      - "company-website-ns"
+
+---
+# Tier 3: Native Distribution - Blockchain Application
+apiVersion: v1
+kind: Endophyte
+metadata:
+  name: blockchain-node
+  annotations:
+    mycelium.network/isolation-level: "native"
+    mycelium.network/distribution-strategy: "blockchain-consensus"
+spec:
+  isolation: native
+  image: "ethereum/client:latest"
+  distributionStrategy: "application-managed"
+  nativeDistribution:
+    type: "blockchain-consensus"
+    consensusAlgorithm: "proof-of-stake"
+    nodeRole: "validator"
+    peerDiscovery: "service-spore"
+  resources:
+    cpu: "2 cores"
+    memory: "8Gi"
+    storage: "1Ti"
+  networking:
+    p2pPort: 30303
+    rpcPort: 8545
+    externalAccess: true
+
+---
+# Tier 3: Native Distribution - Distributed Database
+apiVersion: v1
+kind: Endophyte
+metadata:
+  name: cassandra-cluster
+  annotations:
+    mycelium.network/isolation-level: "native"
+    mycelium.network/distribution-strategy: "consistent-hashing"
+spec:
+  isolation: native
+  image: "cassandra:4.0"
+  distributionStrategy: "application-managed"
+  nativeDistribution:
+    type: "consistent-hashing"
+    replicationFactor: 3
+    consistencyLevel: "quorum"
+    shardingStrategy: "murmur3"
+  resources:
+    cpu: "4 cores"
+    memory: "16Gi"
+    storage: "500Gi"
+  clustering:
+    seedNodes: 3
+    autoScaling: true
+    maxNodes: 12
+
+---
+# Development Environment - Shared Virtual Computer
+apiVersion: v1
+kind: Endophyte
+metadata:
+  name: development-environment
+  annotations:
+    mycelium.network/isolation-level: "shared"
+    mycelium.network/environment: "development"
+spec:
+  isolation: shared
+  image: "vscode/devcontainer:latest"
+  resources:
+    cpu: "2 cores"
+    memory: "4Gi"
+    storage: "50Gi"
+  compatibilityGroup: "development"
+  namespace: "dev-env-ns"
+  developerAccess:
+    sshAccess: true
+    sshKeys:
+      - "ssh-rsa AAAAB3NzaC1yc2E... developer@company.com"
+    sudoAccess: true
+  networking:
+    staticIP: "10.100.2.100"
+    portForwarding:
+      - containerPort: 3000
+        hostPort: 3000
+      - containerPort: 8080
+        hostPort: 8080
+
+---
+# Game Server - Dedicated Virtual Computer
+apiVersion: v1
+kind: Endophyte
+metadata:
+  name: minecraft-server
+  annotations:
+    mycelium.network/isolation-level: "dedicated"
+    mycelium.network/real-time: "true"
+spec:
+  isolation: dedicated
+  image: "minecraft/server:java17"
+  resources:
+    cpu: "4 cores"
+    memory: "8Gi"
+    storage: "100Gi"
+  virtualComputer:
+    type: "real-time-optimized"
+    dedicatedNodes: 3
+    stateSync: "10ms"  # Very frequent sync for game state
+    failoverTime: "50ms"  # Ultra-fast failover for gaming
+  networking:
+    staticIP: "10.100.3.25"
+    gamePort: 25565
+    rconPort: 25575
+  realTimeOptimization:
+    latencyOptimization: true
+    predictiveSync: true
+    priorityTraffic: true

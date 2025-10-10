@@ -1,0 +1,23 @@
+[package]
+name = "mycnet-consensus"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = { workspace = true }
+serde = { workspace = true }
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+tracing = { workspace = true }
+uuid = { workspace = true }
+chrono = { workspace = true }
+
+# Consensus algorithms
+async-raft = { workspace = true }
+
+# Cryptography for consensus
+ed25519-dalek = { workspace = true }
+blake3 = { workspace = true }
+
+# Distributed data structures
+crdt = { workspace = true }

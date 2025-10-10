@@ -1,0 +1,22 @@
+[package]
+name = "mycnet-networking"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = { workspace = true }
+tokio-util = { workspace = true }
+serde = { workspace = true }
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+tracing = { workspace = true }
+uuid = { workspace = true }
+
+# QUIC networking
+quinn = { workspace = true }
+rustls = { workspace = true }
+webpki-roots = { workspace = true }
+
+# Serialization for network protocols
+bincode = { workspace = true }
+postcard = { workspace = true }

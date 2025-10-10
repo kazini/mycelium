@@ -1,0 +1,12 @@
+Personal to_do:
+
+- Fix StackOverflow execution of shell commands issue in Kuro.
+- Make sure gemini can read the folder and work on it within similar parameters.
+- test and see how Gemini handles this, and how Cursor does, too
+- Establish versioning git system and practices.
+
+
+
+
+> Evaluate which system is better at different stages of development.
+> Try to configure a hybrid approach with MCP in Cursor or Kuro with Gemini
