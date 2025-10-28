@@ -1,13 +1,23 @@
 # CONCEPT: SEAMLESS FAULT-TOLERANT DECENTRALIZED NETWORKING ARCHITECTURE
 *The files contained in this repo are documents intended to conceptually blueprint a functional architecture for a decentralized network with the ability to host containers and data storage with seamless fault-tolerance, and its possible development roadmap.*
 
+## Digital Mycelium Network: What Is It?
+Mycelium is a fully decentralized, self-hosting distributed platform that eliminates single points of failure while providing scalable infrastructure for containerized applications. It is inspired by the resiliency and interconnected structure of fungal mycelium networks for certain design elements and intuitive, distinctive nomenclature of architectural components.
 
-## A word on design paradigm for Conceptual Blueprinting
-[I](https://github.com/kazini) enjoy conceptually mapping out architectures and building technical ideas in this format. The repo is public for those that have expressed interest and would like to contribute to the conceptual development, as well as to those that could use it as a point of reference for more practical development.
+The document outlining the final ideal product is subject to change, and can be found here: [MYCNET-README.md](./.kiro/specs/mycnet/README.md)
+______________________
+## A word on Conceptual Blueprinting
+[I](https://github.com/kazini) enjoy conceptually mapping out architectures and building technical ideas in this format. The repo is public for those that have expressed interest and would like to contribute to the conceptual development, as well as to those that could use it as a point of reference for more practical development. Changes to the blueprinting paradigm and contributions of all types and scale are welcomed.
 
+##### Terminology:
+```md
+{Blueprinting} Drafting plans, documentation, and the relation maps. Comprehends Iterating and Prototyping.
+{Iterating} Process of creating a variation of existing components, be they conceptual or architectural.
+{Prototyping} Drafting a new architectural paradigm. Step of Iterating.
+```
 
-### On the workflow for conceptual iteration:
-The process of conceptual blueprinting is based on:
+### On the workflow for Conceptual Iteration:
+The principles of iteration in conceptual blueprinting are:
 * **Conceptual prototyping** of major components as expected for their function and role;
 * **Reviewing requirements** for potential implementations;
 * **Evaluating edge cases and alternative iterations**, considering modular and scalable releases for mvp's;
@@ -38,10 +48,6 @@ Any contributions for ideas and suggestions are welcomed. Feel free to make comm
   * Steering documents with helpful principles can be found here: #NOT_YET_ADDED
 
 ______________________
-## Digital Mycelium Network: What Is It?
-Mycelium is a fully decentralized, self-hosting distributed platform that eliminates single points of failure while providing scalable infrastructure for containerized applications. Inspired by the resilient, interconnected structure of fungal mycelium networks.
-
-The document outlining the final ideal product is subject to change, and can be found here: [MYCNET-README.md](./.kiro/specs/mycnet/README.md)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
