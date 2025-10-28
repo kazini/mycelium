@@ -2,10 +2,29 @@
 *The files contained in this repo are documents intended to conceptually blueprint a functional architecture for a decentralized network with the ability to host containers and data storage with seamless fault-tolerance, and its possible development roadmap.*
 
 ## Digital Mycelium Network: What Is It?
-Mycelium is a fully decentralized, self-hosting distributed platform that eliminates single points of failure while providing scalable infrastructure for containerized applications. It is inspired by the resiliency and interconnected structure of fungal mycelium networks for certain design elements and intuitive, distinctive nomenclature of architectural components.
+Mycelium is a fully decentralized, self-hosting distributed platform that eliminates single points of failure while providing scalable infrastructure for containerized applications. It is inspired by the resiliency and interconnected structure of fungal mycelium networks for certain design elements and intuitive yet distinctive nomenclature for architectural components.
 
 The document outlining the final ideal product is subject to change, and can be found here: [MYCNET-README.md](./.kiro/specs/mycnet/README.md)
-______________________
+
+## Acknowledgments
+<#list of contributors>
+___
+## Project Status
+Any contributions for ideas and suggestions are welcomed. Feel free to make commits and edits to any documents, no matter how small.
+
+### Current
+* First draft. Major components are defined and general limitations understood, but their specifics have only been expanded on through spec-driven LLM usage, not yet fully reviewed nor streamlined.
+
+### Needed
+* Peer-reviewing of the major components and general architecture intent as to acquire input for further consideration of decisions.
+* Project development roadmap breaking down possible development into MVP's.
+* Streamlining of documentation about architecture, perhaps creating mermaid charts for architecture.
+
+### Resources
+**LLMs:** The environment is currently set as a kiro specification set. It should be compatible with most LLM's and very human-readable. You can use [YASK](https://github.com/kazini/yask-spec-kit) as an alternative to produce the same format of documentation with any agents with custom instruction set support. EARS-like documentation *is not* required for valid contributions to the project, and changes in paradigm and structure, if justified, are welcomed.
+  * Steering documents with helpful principles can be found here: #NOT_YET_ADDED
+
+___
 ## A word on Conceptual Blueprinting
 [I](https://github.com/kazini) enjoy conceptually mapping out architectures and building technical ideas in this format. The repo is public for those that have expressed interest and would like to contribute to the conceptual development, as well as to those that could use it as a point of reference for more practical development. Changes to the blueprinting paradigm and contributions of all types and scale are welcomed.
 
@@ -32,27 +51,8 @@ The project development's has been assisted by spec-driven LLM agents. Contribut
 
 My advice is that you have a set of ideas and vision for the higher skeleton elements in your mind, and then utilize these agents to assess information, verify it externally with sources at crucial decision points, and utilize the resulting output as your new input for conceptual prototyping, to ensure the more specific and down-the-branches elements can remain volatile where needed, but the main branches of decision are stable.
 ___
-## Project Status
-Any contributions for ideas and suggestions are welcomed. Feel free to make commits and edits to any documents, no matter how small.
-
-### Current
-* First draft. Major components are defined and general limitations understood, but their specifics have only been expanded on through spec-driven LLM usage, not yet fully reviewed nor streamlined.
-
-### Needed
-* Peer-reviewing of the major components and general architecture intent as to acquire input for further consideration of decisions.
-* Project development roadmap breaking down possible development into MVP's.
-* Streamlining of documentation about architecture, perhaps creating mermaid charts for architecture.
-
-### Resources
-**LLMs:** The environment is currently set as a kiro specification set. It should be compatible with most LLM's and very human-readable. You can use [YASK](https://github.com/kazini/yask-spec-kit) as an alternative to produce the same format of documentation with any agents with custom instruction set support. EARS-like documentation *is not* required for valid contributions to the project, and changes in paradigm and structure, if justified, are welcomed.
-  * Steering documents with helpful principles can be found here: #NOT_YET_ADDED
-
-______________________
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Acknowledgments
-_Inspired by the incredible resilience and efficiency of biological mycelium networks, and built on the shoulders of giants in distributed systems research and the efforts of the Kubernetes community._
 
-<#list of contributors>
