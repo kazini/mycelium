@@ -7,12 +7,17 @@
 
 
 ### On the workflow for conceptual iteration:
-The process of conceptual blueprinting is based on on conceptual prototyping of the major elements and components as expected for their function and role, reviewing requirements of potential implementations, evaluating edge cases and different iterations considering modular and scalable releases for mvp's, comparing pros vs cons against the currently established conceptual model, and finally evaluating how it would have fared in future scalability against the model one iteration before the currently established one.
+The process of conceptual blueprinting is based on:
+* **Conceptual prototyping** of major components as expected for their function and role;
+* **Reviewing requirements** for potential implementations;
+* **Evaluating edge cases and alternative iterations**, considering modular and scalable releases for mvp's;
+* **Comparing pros vs cons** against the currently established conceptual model;
+* and finally, **evaluating future scalability** compared to the current model and its previous iteration.
 
 Folding requirements or architectural designs (in the functional overarching sense, not technical specifics) into the next generations is as important to preserve flexibility as it is being able to streamline processes and justify why a feature or imlementation choice is taken over others. The process of back and forth is important, and an approach of working with the major components and building relation maps that branch down into granular specificity is the best practice for conceptualizing and documenting practices.
 
 
-### On the use of LLM agents as a tool:
+### On the use of LLM agents:
 The project development's has been assisted by spec-driven LLM agents. Contributors are expected to be careful on their use at the time of identifying components and mapping out potential implementations, as they tend to lock you down specific paths of development and tend to reduce modularity. Some between-stages mess is to be expected and may be pushed to contributions, but should be amended and streamlined in execution at some point, and should follow the modularity and granularity principles of the project's established paradigm of conceptual blueprinting. 
 
 My advice is that you have a set of ideas and vision for the higher skeleton elements in your mind, and then utilize these agents to assess information, verify it externally with sources at crucial decision points, and utilize the resulting output as your new input for conceptual prototyping, to ensure the more specific and down-the-branches elements can remain volatile where needed, but the main branches of decision are stable.
